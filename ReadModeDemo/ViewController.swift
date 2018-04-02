@@ -28,6 +28,8 @@ class ViewController: UIViewController {
     var innerArticle:String?
     @IBOutlet weak var readModeBtn: UIBarButtonItem!
     @IBOutlet weak var goBackItem: UIBarButtonItem!
+    @IBOutlet weak var copyItem: UIBarButtonItem!
+    @IBOutlet weak var checkItem: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = false
@@ -36,10 +38,10 @@ class ViewController: UIViewController {
             webView = WKWebView(frame: self.view.bounds, configuration: config)
             if let webView = webView {
                 webView.navigationDelegate = self
-                webView.load(URLRequest(url: URL(string: "https://news.sina.cn")!))
+                webView.load(URLRequest(url: URL(string: "https://xw.qq.com/")!))
                 self.view.addSubview(webView)
             }
-            readView = WKWebView(frame: self.view.bounds, configuration: config)
+            readView = WKWebView(frame: self.view.bounds)
             if let readView = readView {
                 readView.navigationDelegate = self
                 readView.isUserInteractionEnabled = false
@@ -52,6 +54,16 @@ class ViewController: UIViewController {
         
         goBackItem.target = self
         goBackItem.action = #selector(handleGoBack)
+        
+        copyItem.target = self
+        copyItem.action = #selector(handleCopy)
+        
+        checkItem.target = self
+        checkItem.action = #selector(isReadModeEnable)
+    }
+    @objc func handleCopy() {
+        //UIPasteboard.general.string = String(describing: webView?.backForwardList.currentItem?.url)
+        UIPasteboard.general.url = webView?.backForwardList.currentItem?.url
     }
     @objc func handleGoBack() {
         if let canGoBack = webView?.canGoBack, canGoBack {
@@ -59,52 +71,42 @@ class ViewController: UIViewController {
         }
     }
     @objc func handleClick() {
-        //quite read mode
+        //go out
         if readView?.alpha == 1 {
             readView?.alpha = 0
             readView?.isUserInteractionEnabled = false
-            goBackItem.isEnabled = true
             readModeBtn.title = "阅读模式"
+            goBackItem.isEnabled = true
+            readModeBtn.isEnabled = false
+            checkItem.isEnabled = true
             return
         }
-        //go to read mode
+        //go in
         if let webView = webView {
-            webView.evaluateJavaScript(" (function(){var article = ReaderJS.createPageFromNode(ReaderArticleFinderJS.adoptableArticle());var title = ReaderArticleFinderJS.articleTitle();var nextPage = ReaderArticleFinderJS.nextPageURL();var outerArticle = (article && article.outerHTML) || '';var innerArticle = (article && article.innerHTML) || '';title = title || '';nextPage = nextPage || '';if(!window['ssReaderModeResult']){ssReaderModeResult = [outerArticle, title, nextPage, escape(innerArticle)];}return ssReaderModeResult;})();", completionHandler: { (result, error) in
-                if let result = result as? Array<String> {
-                    self.outerArticle = result[0]
-                    self.atitle = result[1]
-                    self.nextPageURL = result[2]
-                    self.innerArticle = result[3]
+            webView.evaluateJavaScript(" (function(){var html = readability.mytest();var outHtml = html.outerHTML;return outHtml;})();", completionHandler: { (result, error) in
+                if let result = result as? String {
+                    print(result)
                     //index2.html
                     let indexPath = Bundle.main.path(forResource: "index2", ofType: "html")
                     var indexHTML = try! String(contentsOfFile: indexPath!, encoding: String.Encoding.utf8)
-                    //title
-                    indexHTML = indexHTML.replacingOccurrences(of: "Reader", with: self.atitle!, options: String.CompareOptions.literal, range: indexHTML.startIndex ..< indexHTML.index(indexHTML.startIndex, offsetBy: 300))
-                    //article
-                    let articlePosition = "<div id=\"article\" role=\"article\">"
-                    let range = indexHTML.range(of: articlePosition)
-                    indexHTML.insert(contentsOf: self.outerArticle!, at: (range?.upperBound)!)
-                    //another title
-                    indexHTML = indexHTML.replacingOccurrences(of: "<h1 class=\"title\">undefined</h1>", with: "<h1 class=\"title\">\(self.atitle!)</h1>", options: String.CompareOptions.literal, range: indexHTML.startIndex ..< indexHTML.endIndex)
-                    indexHTML = indexHTML.replacingOccurrences(of: "<h1 class=\"title\"></h1>", with: "<h1 class=\"title\">\(self.atitle!)</h1>", options: String.CompareOptions.literal, range: indexHTML.startIndex ..< indexHTML.endIndex)
+                    indexHTML = indexHTML.replacingOccurrences(of: "<!---->", with: result)
                     self.readView?.loadHTMLString(indexHTML, baseURL: self.webView?.url)
                     self.readView?.alpha = 1
                     self.readView?.isUserInteractionEnabled = true
-                    self.goBackItem.isEnabled = false
                     self.readModeBtn.title = "退出阅读模式"
+                    self.readModeBtn.isEnabled = true
+                    self.goBackItem.isEnabled = false
+                    self.checkItem.isEnabled = false
                 }
             })
         }
     }
     func setupConfig() -> WKWebViewConfiguration? {
-        if let readerJsPath = Bundle.main.path(forResource: "readerLoad", ofType: "js"),let checkJsPath = Bundle.main.path(forResource: "readerCheck", ofType: "js") {
+        if let readerJsPath = Bundle.main.path(forResource: "reader", ofType: "js") {
             let readerJs = try! String(contentsOfFile: readerJsPath, encoding: .utf8)
             let readerUserScript = WKUserScript(source: readerJs, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-            let checkJs = try! String(contentsOfFile: checkJsPath, encoding: .utf8)
-            let checkUserScript = WKUserScript(source: checkJs, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
             let readerContentController = WKUserContentController()
             readerContentController.addUserScript(readerUserScript)
-            readerContentController.addUserScript(checkUserScript)
             readerContentController.add(self, name: "JSController")
             let config = WKWebViewConfiguration()
             config.userContentController = readerContentController
@@ -115,10 +117,10 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    @objc
     func isReadModeEnable() {
-        webView?.evaluateJavaScript("ReaderArticleFinderJS.isReaderModeAvailable();", completionHandler: {(result, error) in
-            if result as? Bool == true {
+        webView?.evaluateJavaScript("readability.isEnableReader();", completionHandler: {(result, error) in
+            if let enable = result as? NSNumber, enable.intValue == 1 {
                 self.readerModeAvailable = true
                 print("read available: yes")
             } else {
@@ -133,13 +135,15 @@ extension ViewController:WKScriptMessageHandler, WKNavigationDelegate {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
 
     }
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        readModeBtn.isEnabled = false
-        isReadModeEnable()
-        decisionHandler(.allow)
-    }
-//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+//
+//        decisionHandler(.allow)
 //    }
-    
+//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//        if webView === self.webView {
+//            readModeBtn.isEnabled = false
+//            isReadModeEnable()
+//        }
+//    }
 }
 

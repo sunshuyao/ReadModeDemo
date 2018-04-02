@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,17 +22,25 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="BQM-VC-EAu">
-                        <barButtonItem key="leftBarButtonItem" title="返回" id="RRU-fM-wbV"/>
-                        <barButtonItem key="rightBarButtonItem" title="阅读模式" id="D7a-nv-BWK"/>
+                        <leftBarButtonItems>
+                            <barButtonItem title="返回" id="RRU-fM-wbV"/>
+                            <barButtonItem title="复制链接" id="BDW-UX-wUo"/>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem title="阅读模式" id="D7a-nv-BWK"/>
+                            <barButtonItem title="check" id="kMQ-eq-Ita"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="checkItem" destination="kMQ-eq-Ita" id="iAt-F0-3Ak"/>
+                        <outlet property="copyItem" destination="BDW-UX-wUo" id="Wax-4c-lL7"/>
                         <outlet property="goBackItem" destination="RRU-fM-wbV" id="aKP-Lx-Sfv"/>
                         <outlet property="readModeBtn" destination="D7a-nv-BWK" id="kHk-bo-F0F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="372" y="78.710644677661179"/>
+            <point key="canvasLocation" x="164" y="66"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pt3-so-qj2">

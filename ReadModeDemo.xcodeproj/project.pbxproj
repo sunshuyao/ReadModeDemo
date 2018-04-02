@@ -12,30 +12,20 @@
 		FD5F20C42068C0AD0086722D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5F20C22068C0AD0086722D /* Main.storyboard */; };
 		FD5F20C62068C0AD0086722D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD5F20C52068C0AD0086722D /* Assets.xcassets */; };
 		FD5F20C92068C0AD0086722D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5F20C72068C0AD0086722D /* LaunchScreen.storyboard */; };
-		FD64DAFB2070B6CA00813846 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = FD64DAF82070B6CA00813846 /* index.html */; };
-		FD64DAFC2070B6CA00813846 /* safari-reader-check.js in Resources */ = {isa = PBXBuildFile; fileRef = FD64DAF92070B6CA00813846 /* safari-reader-check.js */; };
-		FD64DAFD2070B6CA00813846 /* safari-reader.js in Resources */ = {isa = PBXBuildFile; fileRef = FD64DAFA2070B6CA00813846 /* safari-reader.js */; };
-		FD64DAFF2070B6F300813846 /* text.js in Resources */ = {isa = PBXBuildFile; fileRef = FD64DAFE2070B6F200813846 /* text.js */; };
+		FD64DAFD2070B6CA00813846 /* reader.js in Resources */ = {isa = PBXBuildFile; fileRef = FD64DAFA2070B6CA00813846 /* reader.js */; };
 		FD64DB032070B7AB00813846 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = FD64DB002070B7AB00813846 /* index2.html */; };
-		FD64DB042070B7AB00813846 /* readerCheck.js in Resources */ = {isa = PBXBuildFile; fileRef = FD64DB012070B7AB00813846 /* readerCheck.js */; };
-		FD64DB052070B7AB00813846 /* readerLoad.js in Resources */ = {isa = PBXBuildFile; fileRef = FD64DB022070B7AB00813846 /* readerLoad.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FD5F20BB2068C0AD0086722D /* SafariReadModeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafariReadModeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD5F20BB2068C0AD0086722D /* ReadModeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadModeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD5F20BE2068C0AD0086722D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD5F20C02068C0AD0086722D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FD5F20C32068C0AD0086722D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD5F20C52068C0AD0086722D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD5F20C82068C0AD0086722D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD5F20CA2068C0AD0086722D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FD64DAF82070B6CA00813846 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		FD64DAF92070B6CA00813846 /* safari-reader-check.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "safari-reader-check.js"; sourceTree = "<group>"; };
-		FD64DAFA2070B6CA00813846 /* safari-reader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "safari-reader.js"; sourceTree = "<group>"; };
-		FD64DAFE2070B6F200813846 /* text.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = text.js; sourceTree = "<group>"; };
+		FD64DAFA2070B6CA00813846 /* reader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = reader.js; sourceTree = "<group>"; };
 		FD64DB002070B7AB00813846 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
-		FD64DB012070B7AB00813846 /* readerCheck.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = readerCheck.js; sourceTree = "<group>"; };
-		FD64DB022070B7AB00813846 /* readerLoad.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = readerLoad.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +42,7 @@
 		FD5F20B22068C0AD0086722D = {
 			isa = PBXGroup;
 			children = (
-				FD5F20BD2068C0AD0086722D /* SafariReadModeDemo */,
+				FD5F20BD2068C0AD0086722D /* ReadModeDemo */,
 				FD5F20BC2068C0AD0086722D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,12 +50,12 @@
 		FD5F20BC2068C0AD0086722D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FD5F20BB2068C0AD0086722D /* SafariReadModeDemo.app */,
+				FD5F20BB2068C0AD0086722D /* ReadModeDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FD5F20BD2068C0AD0086722D /* SafariReadModeDemo */ = {
+		FD5F20BD2068C0AD0086722D /* ReadModeDemo */ = {
 			isa = PBXGroup;
 			children = (
 				FD5F20D12068C2010086722D /* js.bundle */,
@@ -76,19 +66,14 @@
 				FD5F20C72068C0AD0086722D /* LaunchScreen.storyboard */,
 				FD5F20CA2068C0AD0086722D /* Info.plist */,
 			);
-			path = SafariReadModeDemo;
+			path = ReadModeDemo;
 			sourceTree = "<group>";
 		};
 		FD5F20D12068C2010086722D /* js.bundle */ = {
 			isa = PBXGroup;
 			children = (
-				FD64DAF82070B6CA00813846 /* index.html */,
 				FD64DB002070B7AB00813846 /* index2.html */,
-				FD64DB012070B7AB00813846 /* readerCheck.js */,
-				FD64DB022070B7AB00813846 /* readerLoad.js */,
-				FD64DAFE2070B6F200813846 /* text.js */,
-				FD64DAF92070B6CA00813846 /* safari-reader-check.js */,
-				FD64DAFA2070B6CA00813846 /* safari-reader.js */,
+				FD64DAFA2070B6CA00813846 /* reader.js */,
 			);
 			path = js.bundle;
 			sourceTree = "<group>";
@@ -96,9 +81,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FD5F20BA2068C0AD0086722D /* SafariReadModeDemo */ = {
+		FD5F20BA2068C0AD0086722D /* ReadModeDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FD5F20CD2068C0AD0086722D /* Build configuration list for PBXNativeTarget "SafariReadModeDemo" */;
+			buildConfigurationList = FD5F20CD2068C0AD0086722D /* Build configuration list for PBXNativeTarget "ReadModeDemo" */;
 			buildPhases = (
 				FD5F20B72068C0AD0086722D /* Sources */,
 				FD5F20B82068C0AD0086722D /* Frameworks */,
@@ -108,9 +93,9 @@
 			);
 			dependencies = (
 			);
-			name = SafariReadModeDemo;
+			name = ReadModeDemo;
 			productName = SafariReadModeDemo;
-			productReference = FD5F20BB2068C0AD0086722D /* SafariReadModeDemo.app */;
+			productReference = FD5F20BB2068C0AD0086722D /* ReadModeDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -129,7 +114,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FD5F20B62068C0AD0086722D /* Build configuration list for PBXProject "SafariReadModeDemo" */;
+			buildConfigurationList = FD5F20B62068C0AD0086722D /* Build configuration list for PBXProject "ReadModeDemo" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -142,7 +127,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FD5F20BA2068C0AD0086722D /* SafariReadModeDemo */,
+				FD5F20BA2068C0AD0086722D /* ReadModeDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -153,15 +138,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD64DB032070B7AB00813846 /* index2.html in Resources */,
-				FD64DAFF2070B6F300813846 /* text.js in Resources */,
-				FD64DAFC2070B6CA00813846 /* safari-reader-check.js in Resources */,
-				FD64DAFD2070B6CA00813846 /* safari-reader.js in Resources */,
-				FD64DB042070B7AB00813846 /* readerCheck.js in Resources */,
+				FD64DAFD2070B6CA00813846 /* reader.js in Resources */,
 				FD5F20C92068C0AD0086722D /* LaunchScreen.storyboard in Resources */,
-				FD64DAFB2070B6CA00813846 /* index.html in Resources */,
 				FD5F20C62068C0AD0086722D /* Assets.xcassets in Resources */,
 				FD5F20C42068C0AD0086722D /* Main.storyboard in Resources */,
-				FD64DB052070B7AB00813846 /* readerLoad.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +292,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2MVQVUGM76;
-				INFOPLIST_FILE = SafariReadModeDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ReadModeDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = readmode.demo.SafariReadModeDemo;
@@ -328,7 +308,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2MVQVUGM76;
-				INFOPLIST_FILE = SafariReadModeDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ReadModeDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = readmode.demo.SafariReadModeDemo;
@@ -341,7 +321,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FD5F20B62068C0AD0086722D /* Build configuration list for PBXProject "SafariReadModeDemo" */ = {
+		FD5F20B62068C0AD0086722D /* Build configuration list for PBXProject "ReadModeDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FD5F20CB2068C0AD0086722D /* Debug */,
@@ -350,7 +330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FD5F20CD2068C0AD0086722D /* Build configuration list for PBXNativeTarget "SafariReadModeDemo" */ = {
+		FD5F20CD2068C0AD0086722D /* Build configuration list for PBXNativeTarget "ReadModeDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FD5F20CE2068C0AD0086722D /* Debug */,
